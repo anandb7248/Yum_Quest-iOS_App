@@ -8,21 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		1C210D871F1DD8CF00100F92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C210D861F1DD8CF00100F92 /* AppDelegate.swift */; };
-		1C210D891F1DD8CF00100F92 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C210D881F1DD8CF00100F92 /* ViewController.swift */; };
 		1C210D8C1F1DD8CF00100F92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C210D8A1F1DD8CF00100F92 /* Main.storyboard */; };
 		1C210D8E1F1DD8CF00100F92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C210D8D1F1DD8CF00100F92 /* Assets.xcassets */; };
 		1C210D911F1DD8CF00100F92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C210D8F1F1DD8CF00100F92 /* LaunchScreen.storyboard */; };
+		1CEAD3BA1F21862E002506FC /* RestaurantInfoTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAD3B91F21862E002506FC /* RestaurantInfoTVCell.swift */; };
+		1CEAD3BC1F21889B002506FC /* RestaurantsNearMeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAD3BB1F21889B002506FC /* RestaurantsNearMeVC.swift */; };
+		1CEAD3BE1F218C46002506FC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CEAD3BD1F218C46002506FC /* CoreLocation.framework */; };
 		A22654225E1E597ABA8DDF16 /* Pods_Yum_Quest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 933FBA043D31C487D1BEDB6C /* Pods_Yum_Quest.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1C210D831F1DD8CF00100F92 /* Yum_Quest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yum_Quest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C210D861F1DD8CF00100F92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1C210D881F1DD8CF00100F92 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1C210D8B1F1DD8CF00100F92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1C210D8D1F1DD8CF00100F92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C210D901F1DD8CF00100F92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C210D921F1DD8CF00100F92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1CEAD3B91F21862E002506FC /* RestaurantInfoTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantInfoTVCell.swift; sourceTree = "<group>"; };
+		1CEAD3BB1F21889B002506FC /* RestaurantsNearMeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantsNearMeVC.swift; sourceTree = "<group>"; };
+		1CEAD3BD1F218C46002506FC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		2EB969A0B18A2B08370D092D /* Pods-Yum_Quest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yum_Quest.release.xcconfig"; path = "Pods/Target Support Files/Pods-Yum_Quest/Pods-Yum_Quest.release.xcconfig"; sourceTree = "<group>"; };
 		512ABD6B19325E5194E98CB2 /* Pods-Yum_Quest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yum_Quest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Yum_Quest/Pods-Yum_Quest.debug.xcconfig"; sourceTree = "<group>"; };
 		933FBA043D31C487D1BEDB6C /* Pods_Yum_Quest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yum_Quest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -33,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CEAD3BE1F218C46002506FC /* CoreLocation.framework in Frameworks */,
 				A22654225E1E597ABA8DDF16 /* Pods_Yum_Quest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -62,7 +67,8 @@
 			isa = PBXGroup;
 			children = (
 				1C210D861F1DD8CF00100F92 /* AppDelegate.swift */,
-				1C210D881F1DD8CF00100F92 /* ViewController.swift */,
+				1CEAD3BB1F21889B002506FC /* RestaurantsNearMeVC.swift */,
+				1CEAD3B91F21862E002506FC /* RestaurantInfoTVCell.swift */,
 				1C210D8A1F1DD8CF00100F92 /* Main.storyboard */,
 				1C210D8D1F1DD8CF00100F92 /* Assets.xcassets */,
 				1C210D8F1F1DD8CF00100F92 /* LaunchScreen.storyboard */,
@@ -74,6 +80,7 @@
 		363B98D764CD321AED3C8540 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1CEAD3BD1F218C46002506FC /* CoreLocation.framework */,
 				933FBA043D31C487D1BEDB6C /* Pods_Yum_Quest.framework */,
 			);
 			name = Frameworks;
@@ -211,7 +218,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C210D891F1DD8CF00100F92 /* ViewController.swift in Sources */,
+				1CEAD3BA1F21862E002506FC /* RestaurantInfoTVCell.swift in Sources */,
+				1CEAD3BC1F21889B002506FC /* RestaurantsNearMeVC.swift in Sources */,
 				1C210D871F1DD8CF00100F92 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,6 +384,7 @@
 				1C210D971F1DD8CF00100F92 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
