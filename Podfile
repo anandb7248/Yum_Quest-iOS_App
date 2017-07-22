@@ -7,4 +7,5 @@ target 'Yum_Quest' do
 
   # Pods for Yum_Quest
 	pod 'Alamofire', '~>4.4'
+	pod 'SwiftyJSON'
 end

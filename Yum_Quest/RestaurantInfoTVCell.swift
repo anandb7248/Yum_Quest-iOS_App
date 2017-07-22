@@ -10,6 +10,10 @@ import UIKit
 
 class RestaurantInfoTVCell: UITableViewCell {
 
+    @IBOutlet weak var restaurantNameLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var canViewMenuLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +24,4 @@ class RestaurantInfoTVCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

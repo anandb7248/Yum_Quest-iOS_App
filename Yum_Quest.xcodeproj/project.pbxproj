@@ -11,6 +11,10 @@
 		1C210D8C1F1DD8CF00100F92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C210D8A1F1DD8CF00100F92 /* Main.storyboard */; };
 		1C210D8E1F1DD8CF00100F92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C210D8D1F1DD8CF00100F92 /* Assets.xcassets */; };
 		1C210D911F1DD8CF00100F92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C210D8F1F1DD8CF00100F92 /* LaunchScreen.storyboard */; };
+		1C9C9EDA1F22D294006421A3 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9C9ED91F22D294006421A3 /* Menu.swift */; };
+		1C9C9EDC1F22DEBE006421A3 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9C9EDB1F22DEBE006421A3 /* MenuItem.swift */; };
+		1C9C9EDE1F22DFA1006421A3 /* MenuCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9C9EDD1F22DFA1006421A3 /* MenuCategory.swift */; };
+		1C9C9EE21F22FDA5006421A3 /* MenuSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9C9EE11F22FDA5006421A3 /* MenuSection.swift */; };
 		1CEAD3BA1F21862E002506FC /* RestaurantInfoTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAD3B91F21862E002506FC /* RestaurantInfoTVCell.swift */; };
 		1CEAD3BC1F21889B002506FC /* RestaurantsNearMeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAD3BB1F21889B002506FC /* RestaurantsNearMeVC.swift */; };
 		1CEAD3BE1F218C46002506FC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CEAD3BD1F218C46002506FC /* CoreLocation.framework */; };
@@ -27,6 +31,10 @@
 		1C210D8D1F1DD8CF00100F92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C210D901F1DD8CF00100F92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C210D921F1DD8CF00100F92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C9C9ED91F22D294006421A3 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		1C9C9EDB1F22DEBE006421A3 /* MenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		1C9C9EDD1F22DFA1006421A3 /* MenuCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCategory.swift; sourceTree = "<group>"; };
+		1C9C9EE11F22FDA5006421A3 /* MenuSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSection.swift; sourceTree = "<group>"; };
 		1CEAD3B91F21862E002506FC /* RestaurantInfoTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantInfoTVCell.swift; sourceTree = "<group>"; };
 		1CEAD3BB1F21889B002506FC /* RestaurantsNearMeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantsNearMeVC.swift; sourceTree = "<group>"; };
 		1CEAD3BD1F218C46002506FC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -77,11 +85,15 @@
 				1C210D861F1DD8CF00100F92 /* AppDelegate.swift */,
 				1CEAD3BB1F21889B002506FC /* RestaurantsNearMeVC.swift */,
 				1CEAD3B91F21862E002506FC /* RestaurantInfoTVCell.swift */,
+				1CEAD3C71F21CC60002506FC /* NearbyRestaurant.swift */,
+				1C9C9ED91F22D294006421A3 /* Menu.swift */,
+				1C9C9EDD1F22DFA1006421A3 /* MenuCategory.swift */,
+				1C9C9EE11F22FDA5006421A3 /* MenuSection.swift */,
+				1C9C9EDB1F22DEBE006421A3 /* MenuItem.swift */,
 				1C210D8A1F1DD8CF00100F92 /* Main.storyboard */,
 				1C210D8D1F1DD8CF00100F92 /* Assets.xcassets */,
 				1C210D8F1F1DD8CF00100F92 /* LaunchScreen.storyboard */,
 				1C210D921F1DD8CF00100F92 /* Info.plist */,
-				1CEAD3C71F21CC60002506FC /* NearbyRestaurant.swift */,
 			);
 			path = Yum_Quest;
 			sourceTree = "<group>";
@@ -231,8 +243,12 @@
 			files = (
 				1CEAD3BA1F21862E002506FC /* RestaurantInfoTVCell.swift in Sources */,
 				1CEAD3BC1F21889B002506FC /* RestaurantsNearMeVC.swift in Sources */,
+				1C9C9EDE1F22DFA1006421A3 /* MenuCategory.swift in Sources */,
 				1C210D871F1DD8CF00100F92 /* AppDelegate.swift in Sources */,
+				1C9C9EDC1F22DEBE006421A3 /* MenuItem.swift in Sources */,
 				1CEAD3C81F21CC60002506FC /* NearbyRestaurant.swift in Sources */,
+				1C9C9EE21F22FDA5006421A3 /* MenuSection.swift in Sources */,
+				1C9C9EDA1F22D294006421A3 /* Menu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
