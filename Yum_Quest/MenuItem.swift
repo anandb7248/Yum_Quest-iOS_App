@@ -33,11 +33,13 @@ class MenuItem{
             price = ""
         }
         
-        /* TEST - It works!
+        /*
+        // TEST
         print(entryID)
         print(name)
         print(description)
         print(price)
+        // TEST
         */
     }
 }

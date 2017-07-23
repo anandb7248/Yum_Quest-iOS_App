@@ -11,6 +11,8 @@
 		1C210D8C1F1DD8CF00100F92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C210D8A1F1DD8CF00100F92 /* Main.storyboard */; };
 		1C210D8E1F1DD8CF00100F92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C210D8D1F1DD8CF00100F92 /* Assets.xcassets */; };
 		1C210D911F1DD8CF00100F92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C210D8F1F1DD8CF00100F92 /* LaunchScreen.storyboard */; };
+		1C83E2751F23129D001C6FF7 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C83E2741F23129D001C6FF7 /* MapVC.swift */; };
+		1C83E2771F23269F001C6FF7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C83E2761F23269F001C6FF7 /* GoogleService-Info.plist */; };
 		1C9C9EDA1F22D294006421A3 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9C9ED91F22D294006421A3 /* Menu.swift */; };
 		1C9C9EDC1F22DEBE006421A3 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9C9EDB1F22DEBE006421A3 /* MenuItem.swift */; };
 		1C9C9EDE1F22DFA1006421A3 /* MenuCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9C9EDD1F22DFA1006421A3 /* MenuCategory.swift */; };
@@ -21,6 +23,8 @@
 		1CEAD3C41F21BE72002506FC /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CEAD3C31F21BE72002506FC /* SwiftyJSON.framework */; };
 		1CEAD3C61F21BE76002506FC /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CEAD3C51F21BE76002506FC /* Alamofire.framework */; };
 		1CEAD3C81F21CC60002506FC /* NearbyRestaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAD3C71F21CC60002506FC /* NearbyRestaurant.swift */; };
+		1CEDAC771F24358B002C26BE /* RestaurantLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEDAC761F24358B002C26BE /* RestaurantLocale.swift */; };
+		1CEDAC791F244E02002C26BE /* App Icons in Resources */ = {isa = PBXBuildFile; fileRef = 1CEDAC781F244E02002C26BE /* App Icons */; };
 		A22654225E1E597ABA8DDF16 /* Pods_Yum_Quest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 933FBA043D31C487D1BEDB6C /* Pods_Yum_Quest.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +35,8 @@
 		1C210D8D1F1DD8CF00100F92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C210D901F1DD8CF00100F92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1C210D921F1DD8CF00100F92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1C83E2741F23129D001C6FF7 /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
+		1C83E2761F23269F001C6FF7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1C9C9ED91F22D294006421A3 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		1C9C9EDB1F22DEBE006421A3 /* MenuItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		1C9C9EDD1F22DFA1006421A3 /* MenuCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCategory.swift; sourceTree = "<group>"; };
@@ -41,6 +47,8 @@
 		1CEAD3C31F21BE72002506FC /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../../Library/Developer/Xcode/DerivedData/Yum_Quest-gtohcbqtfugsubbedbuqkqqzhglv/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		1CEAD3C51F21BE76002506FC /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../Library/Developer/Xcode/DerivedData/Yum_Quest-gtohcbqtfugsubbedbuqkqqzhglv/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		1CEAD3C71F21CC60002506FC /* NearbyRestaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyRestaurant.swift; sourceTree = "<group>"; };
+		1CEDAC761F24358B002C26BE /* RestaurantLocale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantLocale.swift; sourceTree = "<group>"; };
+		1CEDAC781F244E02002C26BE /* App Icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "App Icons"; sourceTree = "<group>"; };
 		2EB969A0B18A2B08370D092D /* Pods-Yum_Quest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yum_Quest.release.xcconfig"; path = "Pods/Target Support Files/Pods-Yum_Quest/Pods-Yum_Quest.release.xcconfig"; sourceTree = "<group>"; };
 		512ABD6B19325E5194E98CB2 /* Pods-Yum_Quest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Yum_Quest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Yum_Quest/Pods-Yum_Quest.debug.xcconfig"; sourceTree = "<group>"; };
 		933FBA043D31C487D1BEDB6C /* Pods_Yum_Quest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Yum_Quest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -90,10 +98,14 @@
 				1C9C9EDD1F22DFA1006421A3 /* MenuCategory.swift */,
 				1C9C9EE11F22FDA5006421A3 /* MenuSection.swift */,
 				1C9C9EDB1F22DEBE006421A3 /* MenuItem.swift */,
+				1C83E2741F23129D001C6FF7 /* MapVC.swift */,
+				1CEDAC761F24358B002C26BE /* RestaurantLocale.swift */,
 				1C210D8A1F1DD8CF00100F92 /* Main.storyboard */,
 				1C210D8D1F1DD8CF00100F92 /* Assets.xcassets */,
 				1C210D8F1F1DD8CF00100F92 /* LaunchScreen.storyboard */,
 				1C210D921F1DD8CF00100F92 /* Info.plist */,
+				1C83E2761F23269F001C6FF7 /* GoogleService-Info.plist */,
+				1CEDAC781F244E02002C26BE /* App Icons */,
 			);
 			path = Yum_Quest;
 			sourceTree = "<group>";
@@ -181,8 +193,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C210D911F1DD8CF00100F92 /* LaunchScreen.storyboard in Resources */,
+				1C83E2771F23269F001C6FF7 /* GoogleService-Info.plist in Resources */,
 				1C210D8E1F1DD8CF00100F92 /* Assets.xcassets in Resources */,
 				1C210D8C1F1DD8CF00100F92 /* Main.storyboard in Resources */,
+				1CEDAC791F244E02002C26BE /* App Icons in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +255,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CEDAC771F24358B002C26BE /* RestaurantLocale.swift in Sources */,
 				1CEAD3BA1F21862E002506FC /* RestaurantInfoTVCell.swift in Sources */,
 				1CEAD3BC1F21889B002506FC /* RestaurantsNearMeVC.swift in Sources */,
 				1C9C9EDE1F22DFA1006421A3 /* MenuCategory.swift in Sources */,
@@ -248,6 +263,7 @@
 				1C9C9EDC1F22DEBE006421A3 /* MenuItem.swift in Sources */,
 				1CEAD3C81F21CC60002506FC /* NearbyRestaurant.swift in Sources */,
 				1C9C9EE21F22FDA5006421A3 /* MenuSection.swift in Sources */,
+				1C83E2751F23129D001C6FF7 /* MapVC.swift in Sources */,
 				1C9C9EDA1F22D294006421A3 /* Menu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

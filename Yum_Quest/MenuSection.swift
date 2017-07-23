@@ -14,8 +14,6 @@ class MenuSection {
     var sectionItems = [MenuItem]()
     
     init(sectionJSON: JSON) {
-        //print("SECTION")
-        //print(sectionJSON)
         sectionName = sectionJSON["name"].stringValue
         
         for item in sectionJSON["entries"]["items"] {

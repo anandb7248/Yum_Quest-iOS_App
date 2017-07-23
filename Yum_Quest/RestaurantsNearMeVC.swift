@@ -14,6 +14,7 @@ import SwiftyJSON
 class RestaurantsNearMeVC: UIViewController,UITableViewDelegate, UITableViewDataSource,CLLocationManagerDelegate {
 
     let locationManager = CLLocationManager()
+    
     var currentLat:CLLocationDegrees?
     var currentLon:CLLocationDegrees?
     
@@ -26,7 +27,6 @@ class RestaurantsNearMeVC: UIViewController,UITableViewDelegate, UITableViewData
         
         // configureLocationManager will set up the location manager and also set the currentLat and currentLon implicitly
         configureLocationManager()
-        
     }
     
     func configureLocationManager(){
@@ -48,12 +48,14 @@ class RestaurantsNearMeVC: UIViewController,UITableViewDelegate, UITableViewData
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        // Work in progress.
         return
     }
     
     func getNearbyVenues(from latitude: CLLocationDegrees?, from longitude: CLLocationDegrees?) {
         guard let lat = latitude, let lon = longitude
             else {
+                // Will find a way to handle this potential error. Work in Progress
                 return
             }
         
@@ -68,20 +70,30 @@ class RestaurantsNearMeVC: UIViewController,UITableViewDelegate, UITableViewData
                 
                 // Check the ["meta"]["code"] for 200 (OK).
                 if(nearbyRestaurantsJSON["meta"]["code"].stringValue == "200"){
+                    
+                    self.listOfNearbyRestaurants = [NearbyRestaurant]()
+                    
                     for (_,restaurantJSON) in nearbyRestaurantsJSON["response"]["venues"].enumerated(){
+                        
+                        //print(restaurantJSON.1["location"]["address"])
+                        
                         /*
+                        // Everything works as intended
                         print(restaurantJSON.1["name"])
                         print(restaurantJSON.1["location"]["distance"])
                         print(restaurantJSON.1["id"])
-                        print(restaurantJSON.1["hasMenu"]) // Will be either true or null
-                            //["categories"]["id"]// Filter out venues where it is not traditionally known as restaurants e.g. Gas Stations
+                        print(restaurantJSON.1["hasMenu"]) // Will be either "true" or "null"
+                            // ["categories"]["id"]// In the future it looks like I need to filter out venues where it is not traditionally known as restaurants e.g. Gas Stations
                             //["categories"]["pluralName"]
                         */
+                        //print(restaurantJSON.1["location"]["lat"])
+                        //print(restaurantJSON.1["location"]["lng"])
+                        
                         if(restaurantJSON.1["hasMenu"].stringValue == "true"){
-                            self.listOfNearbyRestaurants.append(NearbyRestaurant(venueID:restaurantJSON.1["id"].stringValue, name:restaurantJSON.1["name"].stringValue, hasMenu:true, distanceFromCurrentLocation:restaurantJSON.1["location"]["distance"].stringValue))
+                            self.listOfNearbyRestaurants.append(NearbyRestaurant(venueID:restaurantJSON.1["id"].stringValue,name:restaurantJSON.1["name"].stringValue,hasMenu: true, distanceFromCurrentLocation:restaurantJSON.1["location"]["distance"].stringValue,lat:restaurantJSON.1["location"]["lat"].stringValue,lon:restaurantJSON.1["location"]["lng"].stringValue,address:restaurantJSON.1["location"]["address"].string))
                         }
                         else{
-                            self.listOfNearbyRestaurants.append(NearbyRestaurant(venueID:restaurantJSON.1["id"].stringValue, name:restaurantJSON.1["name"].stringValue, hasMenu:false, distanceFromCurrentLocation:restaurantJSON.1["location"]["distance"].stringValue))
+                            self.listOfNearbyRestaurants.append(NearbyRestaurant(venueID:restaurantJSON.1["id"].stringValue,name:restaurantJSON.1["name"].stringValue,hasMenu: false, distanceFromCurrentLocation:restaurantJSON.1["location"]["distance"].stringValue,lat:restaurantJSON.1["location"]["lat"].stringValue,lon:restaurantJSON.1["location"]["lng"].stringValue, address:restaurantJSON.1["location"]["address"].string))
                         }
                     }
                     
@@ -105,8 +117,10 @@ class RestaurantsNearMeVC: UIViewController,UITableViewDelegate, UITableViewData
                     
                 }else{
                     // Throw error or print error message as there was something wrong with our API call
+                    print("ERROR")
                 }
                 
+                // TEST
                 //print(nearbyRestaurantsSwiftyJSON)
             }
         }
@@ -136,14 +150,18 @@ class RestaurantsNearMeVC: UIViewController,UITableViewDelegate, UITableViewData
         return cell!
     }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        // Prepare for segue to MapVC
+        if(segue.identifier == "showMap"){
+            let mapVC = segue.destination as! MapVC
+            
+        }
     }
-    */
 
 }
