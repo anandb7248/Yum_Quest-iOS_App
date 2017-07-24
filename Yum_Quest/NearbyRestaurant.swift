@@ -62,10 +62,19 @@ class NearbyRestaurant {
                 if (venueDetailsJSON["meta"]["code"].stringValue == "200") {
                     //PriceTier - Works
                     self.priceTier = venueDetailsJSON["response"]["venue"]["attributes"]["groups"][0]["summary"].stringValue
+                    
+                    if self.priceTier == "Credit Cards" {
+                        self.priceTier = " "
+                    }
+                    
                     //Rating - Might need fixing in the future here
                     //print(venueDetailsJSON["response"]["venue"]["rating"])
                     self.rating = venueDetailsJSON["response"]["venue"]["rating"].stringValue
-                    
+                    //print(self.rating)
+                    if (self.rating?.characters.count)! > 3 {
+                        self.rating = self.rating?.substring(to: (self.rating?.index((self.rating?.startIndex)!, offsetBy: 3))!)
+                    }
+            
                     //Rating Color - Works
                     //print(venueDetailsJSON["response"]["venue"]["ratingColor"])
                     self.ratingColor = venueDetailsJSON["response"]["venue"]["ratingColor"].stringValue
