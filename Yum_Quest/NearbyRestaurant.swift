@@ -17,7 +17,8 @@ class NearbyRestaurant {
     let venueID:String
     let name:String
     let menuItems:Menu?
-    let hasMenu:UIColor
+    var hasMenu:Bool
+    let menuBackgroundColor:UIColor
     let distanceFromCurrentLocationMiles:Double
     
     var rating:String?
@@ -41,10 +42,12 @@ class NearbyRestaurant {
         
         if hasMenu == true {
             self.menuItems = Menu(venueID: venueID)
-            self.hasMenu = UIColor.orange
+            self.hasMenu = true
+            self.menuBackgroundColor = UIColor.orange
         }else{
             self.menuItems = nil
-            self.hasMenu = UIColor.white
+            self.hasMenu = false
+            self.menuBackgroundColor = UIColor.white
         }
         
         let miles = Double(inMeters)! * metersToMilesConversionRate
@@ -90,12 +93,6 @@ class NearbyRestaurant {
                     print(self.rating!)
                     print(self.ratingColor!)
                     */
-    
-                    /*
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                    */
                     DispatchQueue.main.async {
                         tableView.reloadData()
                     }
@@ -105,6 +102,5 @@ class NearbyRestaurant {
                 //print(venueDetailsJSON)
             }
         }
-        
     }
 }

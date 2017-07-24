@@ -141,7 +141,7 @@ class RestaurantsNearMeVC: UIViewController,UITableViewDelegate, UITableViewData
         
         cell?.restaurantNameLabel.text = restaurant.name
         cell?.distanceLabel.text = String(restaurant.distanceFromCurrentLocationMiles)
-        cell?.menuReviewsLabel.backgroundColor = restaurant.hasMenu
+        cell?.menuReviewsLabel.backgroundColor = restaurant.menuBackgroundColor
         
         cell?.ratingLabel.text = restaurant.rating
         cell?.ratingBackgroundLabel.backgroundColor = hexStringToUIColor(hex: restaurant.ratingColor)
@@ -150,8 +150,7 @@ class RestaurantsNearMeVC: UIViewController,UITableViewDelegate, UITableViewData
         
         return cell!
     }
-
-    // Function credited to: https://stackoverflow.com/questions/24263007/how-to-use-hex-colour-values-in-swift-ios
+    
     func hexStringToUIColor (hex:String?) -> UIColor {
         guard let hex = hex else {
             return UIColor.white
@@ -189,6 +188,13 @@ class RestaurantsNearMeVC: UIViewController,UITableViewDelegate, UITableViewData
         if(segue.identifier == "showMap"){
             let map = segue.destination as? MapVC
             map?.setRestaurantLocales(listOfRestaurants: listOfNearbyRestaurants)
+        }
+        
+        if(segue.identifier == "showDetails"){
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let restaurant = listOfNearbyRestaurants[(indexPath as NSIndexPath).row]
+                (segue.destination as! RestaurantDetailsVC).restaurantDetail = restaurant
+            }
         }
     }
 

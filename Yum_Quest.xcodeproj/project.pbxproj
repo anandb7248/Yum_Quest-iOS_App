@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C1F5C921F259A65007DE331 /* RestaurantDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F5C911F259A65007DE331 /* RestaurantDetailsVC.swift */; };
+		1C1F5C9C1F25BDC1007DE331 /* MenuDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F5C9B1F25BDC1007DE331 /* MenuDetailsVC.swift */; };
+		1C1F5C9E1F25C0ED007DE331 /* MenuSectionsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F5C9D1F25C0ED007DE331 /* MenuSectionsTableVC.swift */; };
+		1C1F5CA01F25C8BB007DE331 /* MenuSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1F5C9F1F25C8BB007DE331 /* MenuSectionCell.swift */; };
 		1C210D871F1DD8CF00100F92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C210D861F1DD8CF00100F92 /* AppDelegate.swift */; };
 		1C210D8C1F1DD8CF00100F92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C210D8A1F1DD8CF00100F92 /* Main.storyboard */; };
 		1C210D8E1F1DD8CF00100F92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C210D8D1F1DD8CF00100F92 /* Assets.xcassets */; };
@@ -29,6 +33,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C1F5C911F259A65007DE331 /* RestaurantDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailsVC.swift; sourceTree = "<group>"; };
+		1C1F5C9B1F25BDC1007DE331 /* MenuDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDetailsVC.swift; sourceTree = "<group>"; };
+		1C1F5C9D1F25C0ED007DE331 /* MenuSectionsTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSectionsTableVC.swift; sourceTree = "<group>"; };
+		1C1F5C9F1F25C8BB007DE331 /* MenuSectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSectionCell.swift; sourceTree = "<group>"; };
 		1C210D831F1DD8CF00100F92 /* Yum_Quest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yum_Quest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C210D861F1DD8CF00100F92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1C210D8B1F1DD8CF00100F92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -92,6 +100,10 @@
 			children = (
 				1C210D861F1DD8CF00100F92 /* AppDelegate.swift */,
 				1CEAD3BB1F21889B002506FC /* RestaurantsNearMeVC.swift */,
+				1C1F5C911F259A65007DE331 /* RestaurantDetailsVC.swift */,
+				1C1F5C9B1F25BDC1007DE331 /* MenuDetailsVC.swift */,
+				1C1F5C9D1F25C0ED007DE331 /* MenuSectionsTableVC.swift */,
+				1C1F5C9F1F25C8BB007DE331 /* MenuSectionCell.swift */,
 				1CEAD3B91F21862E002506FC /* RestaurantInfoTVCell.swift */,
 				1CEAD3C71F21CC60002506FC /* NearbyRestaurant.swift */,
 				1C9C9ED91F22D294006421A3 /* Menu.swift */,
@@ -255,11 +267,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C1F5C921F259A65007DE331 /* RestaurantDetailsVC.swift in Sources */,
 				1CEDAC7B1F2582D6002C26BE /* RestaurantLocale.swift in Sources */,
 				1CEAD3BA1F21862E002506FC /* RestaurantInfoTVCell.swift in Sources */,
 				1CEAD3BC1F21889B002506FC /* RestaurantsNearMeVC.swift in Sources */,
+				1C1F5CA01F25C8BB007DE331 /* MenuSectionCell.swift in Sources */,
 				1C9C9EDE1F22DFA1006421A3 /* MenuCategory.swift in Sources */,
+				1C1F5C9E1F25C0ED007DE331 /* MenuSectionsTableVC.swift in Sources */,
 				1C210D871F1DD8CF00100F92 /* AppDelegate.swift in Sources */,
+				1C1F5C9C1F25BDC1007DE331 /* MenuDetailsVC.swift in Sources */,
 				1C9C9EDC1F22DEBE006421A3 /* MenuItem.swift in Sources */,
 				1CEAD3C81F21CC60002506FC /* NearbyRestaurant.swift in Sources */,
 				1C9C9EE21F22FDA5006421A3 /* MenuSection.swift in Sources */,
