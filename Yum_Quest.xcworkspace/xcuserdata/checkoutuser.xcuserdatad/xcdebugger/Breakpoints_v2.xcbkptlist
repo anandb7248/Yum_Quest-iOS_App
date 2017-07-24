@@ -26,13 +26,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Yum_Quest/NearbyRestaurant.swift"
-            timestampString = "522548118.470549"
+            timestampString = "522557380.440429"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "NearbyRestaurant"
-            landmarkType = "3">
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "init(venueID:name:hasMenu:distanceFromCurrentLocation:lat:lon:address:tableView:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -63,7 +63,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
             endingLineNumber = "34"
-            landmarkName = "init(venueID:)"
+            landmarkName = "init(venueID:tableView:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -74,12 +74,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Yum_Quest/NearbyRestaurant.swift"
-            timestampString = "522471629.849649"
+            timestampString = "522557380.440429"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "init(venueID:name:hasMenu:distanceFromCurrentLocation:lat:lon:address:)"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "init(venueID:name:hasMenu:distanceFromCurrentLocation:lat:lon:address:tableView:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

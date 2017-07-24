@@ -34,7 +34,6 @@ class Menu {
                     for jsonObject in menuJSON["response"]["menu"]["menus"]["items"] {
                         self.menuCategories.append(MenuCategory(menuObject:jsonObject.1))
                     }
-                    
                 }else{
                     // Throw an error or give error message. Work in progress.
                 }

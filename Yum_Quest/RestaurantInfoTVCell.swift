@@ -12,10 +12,10 @@ class RestaurantInfoTVCell: UITableViewCell {
 
     @IBOutlet weak var restaurantNameLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var canViewMenuLabel: UILabel!
+
+    @IBOutlet weak var menuReviewsLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var ratingBackgroundLabel: UILabel!
-    
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var priceTierLabel: UILabel!
     

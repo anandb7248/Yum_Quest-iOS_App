@@ -90,10 +90,10 @@ class RestaurantsNearMeVC: UIViewController,UITableViewDelegate, UITableViewData
                         //print(restaurantJSON.1["location"]["lng"])
                         
                         if(restaurantJSON.1["hasMenu"].stringValue == "true"){
-                            self.listOfNearbyRestaurants.append(NearbyRestaurant(venueID:restaurantJSON.1["id"].stringValue,name:restaurantJSON.1["name"].stringValue,hasMenu: true, distanceFromCurrentLocation:restaurantJSON.1["location"]["distance"].stringValue,lat:restaurantJSON.1["location"]["lat"].stringValue,lon:restaurantJSON.1["location"]["lng"].stringValue,address:restaurantJSON.1["location"]["address"].string))
+                            self.listOfNearbyRestaurants.append(NearbyRestaurant(venueID:restaurantJSON.1["id"].stringValue,name:restaurantJSON.1["name"].stringValue,hasMenu: true, distanceFromCurrentLocation:restaurantJSON.1["location"]["distance"].stringValue,lat:restaurantJSON.1["location"]["lat"].stringValue,lon:restaurantJSON.1["location"]["lng"].stringValue,address:restaurantJSON.1["location"]["address"].string, tableView: self.tableView))
                         }
                         else{
-                            self.listOfNearbyRestaurants.append(NearbyRestaurant(venueID:restaurantJSON.1["id"].stringValue,name:restaurantJSON.1["name"].stringValue,hasMenu: false, distanceFromCurrentLocation:restaurantJSON.1["location"]["distance"].stringValue,lat:restaurantJSON.1["location"]["lat"].stringValue,lon:restaurantJSON.1["location"]["lng"].stringValue, address:restaurantJSON.1["location"]["address"].string))
+                            self.listOfNearbyRestaurants.append(NearbyRestaurant(venueID:restaurantJSON.1["id"].stringValue,name:restaurantJSON.1["name"].stringValue,hasMenu: false, distanceFromCurrentLocation:restaurantJSON.1["location"]["distance"].stringValue,lat:restaurantJSON.1["location"]["lat"].stringValue,lon:restaurantJSON.1["location"]["lng"].stringValue, address:restaurantJSON.1["location"]["address"].string, tableView: self.tableView))
                         }
                     }
                     
@@ -114,7 +114,6 @@ class RestaurantsNearMeVC: UIViewController,UITableViewDelegate, UITableViewData
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
-                    
                 }else{
                     // Throw error or print error message as there was something wrong with our API call
                     print("ERROR")
@@ -142,10 +141,7 @@ class RestaurantsNearMeVC: UIViewController,UITableViewDelegate, UITableViewData
         
         cell?.restaurantNameLabel.text = restaurant.name
         cell?.distanceLabel.text = String(restaurant.distanceFromCurrentLocationMiles)
-        // Determine if we need to display the "View/Rate Menu" for the table cell
-        if !restaurant.hasMenu {
-            cell?.canViewMenuLabel.isHidden = true
-        }
+        cell?.menuReviewsLabel.backgroundColor = restaurant.hasMenu
         
         cell?.ratingLabel.text = restaurant.rating
         cell?.ratingBackgroundLabel.backgroundColor = hexStringToUIColor(hex: restaurant.ratingColor)
@@ -191,6 +187,8 @@ class RestaurantsNearMeVC: UIViewController,UITableViewDelegate, UITableViewData
         
         // Prepare for segue to MapVC
         if(segue.identifier == "showMap"){
+            let map = segue.destination as? MapVC
+            map?.setRestaurantLocales(listOfRestaurants: listOfNearbyRestaurants)
         }
     }
 

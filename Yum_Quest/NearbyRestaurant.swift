@@ -9,6 +9,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import CoreLocation
+import MapKit
 
 let metersToMilesConversionRate:Double = 0.000621371
 
@@ -16,7 +17,7 @@ class NearbyRestaurant {
     let venueID:String
     let name:String
     let menuItems:Menu?
-    let hasMenu:Bool
+    let hasMenu:UIColor
     let distanceFromCurrentLocationMiles:Double
     
     var rating:String?
@@ -28,19 +29,22 @@ class NearbyRestaurant {
     var category:String?
     
     /* lat and lon will be used to show restaurant location annotations on the map */
-    let lat:Double
-    let lon:Double
+    //let lat:Double
+    //let lon:Double
+    var coordinate: CLLocationCoordinate2D
     
-    init(venueID:String, name:String, hasMenu:Bool, distanceFromCurrentLocation inMeters:String,lat:String,lon:String,address:String?) {
+    init(venueID:String, name:String, hasMenu:Bool, distanceFromCurrentLocation inMeters:String,lat:String,lon:String,address:String?,tableView:UITableView) {
         self.venueID = venueID
         self.name = name
-        self.hasMenu = hasMenu
+        //self.hasMenu = hasMenu
         // If the restaurant allows the user to view the menu, then do an API call to obtain all the menu information.
         
         if hasMenu == true {
             self.menuItems = Menu(venueID: venueID)
+            self.hasMenu = UIColor.orange
         }else{
             self.menuItems = nil
+            self.hasMenu = UIColor.white
         }
         
         let miles = Double(inMeters)! * metersToMilesConversionRate
@@ -48,8 +52,7 @@ class NearbyRestaurant {
         // Save the miles value to two significant figures
         self.distanceFromCurrentLocationMiles = Double(round(10*miles)/10)
         
-        self.lat = Double(lat)!
-        self.lon = Double(lon)!
+        self.coordinate = CLLocationCoordinate2D(latitude: Double(lat)!, longitude: Double(lon)!)
         self.address = address
         
         // Call Foursquare API using the venueID to obtain additional information regarding the restaurant
@@ -87,11 +90,21 @@ class NearbyRestaurant {
                     print(self.rating!)
                     print(self.ratingColor!)
                     */
+    
+                    /*
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                    */
+                    DispatchQueue.main.async {
+                        tableView.reloadData()
+                    }
                 }else{
                     // Handle error
                 }
                 //print(venueDetailsJSON)
             }
         }
+        
     }
 }

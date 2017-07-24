@@ -10,11 +10,13 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapVC: UIViewController,CLLocationManagerDelegate {
+class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var map: MKMapView!
     
     let locationManager = CLLocationManager()
+    
+    var restaurantsLocale = [RestaurantLocale]()
     
     // This function is called everytime the user's location is updated
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -38,6 +40,9 @@ class MapVC: UIViewController,CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        map.isUserInteractionEnabled = true
+        map.addAnnotations(restaurantsLocale)
+        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
@@ -50,6 +55,25 @@ class MapVC: UIViewController,CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    func setRestaurantLocales(listOfRestaurants: [NearbyRestaurant]) {
+        for restaurant in listOfRestaurants {
+            if let category = restaurant.category, let price = restaurant.priceTier {
+                let locale = RestaurantLocale(coord: restaurant.coordinate, named: restaurant.name, detail: category + " " + price)
+                
+                    restaurantsLocale.append(locale)
+            }
+        }
+    }
+
+    
+    // The following method below will be called each time an annotation is about to show in the map.
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        let pinView = MKPinAnnotationView()
+        pinView.pinTintColor = .red
+        pinView.canShowCallout = true
+            return pinView
+    }
 
     /*
     // MARK: - Navigation
