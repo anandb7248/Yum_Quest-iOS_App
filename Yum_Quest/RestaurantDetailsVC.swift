@@ -54,7 +54,7 @@ class RestaurantDetailsVC: UIViewController {
         
         if segue.identifier == "showMenu" {
             let menuDetails = segue.destination as! MenuDetailsVC
-            menuDetails.menuOfChosenRestaurant = restaurantDetail
+            menuDetails.chosenRestaurant = restaurantDetail
             menuDetails.ratingBackgroundColor = ratingBackgroundColor
             
             /*

@@ -1,16 +1,19 @@
 //
-//  MenuSectionCell.swift
+//  MenuItemsTableViewCell.swift
 //  Yum_Quest
 //
-//  Created by AnandBatjargal on 7/23/17.
+//  Created by AnandBatjargal on 7/24/17.
 //  Copyright © 2017 anandb7248. All rights reserved.
 //
 
 import UIKit
 
-class MenuSectionCell: UITableViewCell {
-
-    @IBOutlet weak var sectionLabel: UILabel!
+class MenuItemsTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

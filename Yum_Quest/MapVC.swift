@@ -64,7 +64,6 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
             }
         }
     }
-
     
     // The following method below will be called each time an annotation is about to show in the map.
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

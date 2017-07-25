@@ -197,5 +197,4 @@ class RestaurantsNearMeVC: UIViewController,UITableViewDelegate, UITableViewData
             }
         }
     }
-
 }

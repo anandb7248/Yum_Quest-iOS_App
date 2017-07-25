@@ -14,7 +14,6 @@ class MenuDetailsVC: UIViewController {
     @IBOutlet weak var ratingLabel: UILabel!
     
     var chosenRestaurant:NearbyRestaurant?
-    
     var ratingBackgroundColor:UIColor?
     
     override func viewDidLoad() {
@@ -36,10 +35,12 @@ class MenuDetailsVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        
-        if segue.identifier == "showSections" {
-            let restaurant = segue.destination as! MenuSectionsTableVC
-            restaurant.menuCategories = chosenRestaurant?.menuItems?.menuCategories
+        if segue.identifier == "showMenu" {
+            let menuTableView = segue.destination as! MenuTableVC
+            menuTableView.restaurantName = (chosenRestaurant?.name)!
+            menuTableView.restaurantRating = (chosenRestaurant?.rating)!
+            menuTableView.restaurantRatingColor = (chosenRestaurant?.ratingColor)!
+            menuTableView.menu = chosenRestaurant?.menuItems
         }
     }
 
