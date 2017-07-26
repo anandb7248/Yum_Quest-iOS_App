@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 import Alamofire
 import SwiftyJSON
+import Firebase
 
 class RestaurantsNearMeVC: UIViewController,UITableViewDelegate, UITableViewDataSource,CLLocationManagerDelegate {
 
@@ -20,13 +21,23 @@ class RestaurantsNearMeVC: UIViewController,UITableViewDelegate, UITableViewData
     
     var listOfNearbyRestaurants = [NearbyRestaurant]()
     
+    var ref:DatabaseReference?
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ref = Database.database().reference()
         
         // configureLocationManager will set up the location manager and also set the currentLat and currentLon implicitly
         configureLocationManager()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        // Initialize Tab Bar Item
+        tabBarItem = UITabBarItem(title: "Restaurants", image: UIImage(named: "restaurantsTab"), tag: 1)
     }
     
     func configureLocationManager(){
@@ -44,7 +55,7 @@ class RestaurantsNearMeVC: UIViewController,UITableViewDelegate, UITableViewData
         currentLat = currentLocation.coordinate.latitude
         currentLon = currentLocation.coordinate.longitude
         
-        getNearbyVenues(from:currentLat, from:currentLon)
+        getNearbyVenues(from:currentLat, from:currentLon, databaseRef: self.ref)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -52,12 +63,14 @@ class RestaurantsNearMeVC: UIViewController,UITableViewDelegate, UITableViewData
         return
     }
     
-    func getNearbyVenues(from latitude: CLLocationDegrees?, from longitude: CLLocationDegrees?) {
+    func getNearbyVenues(from latitude: CLLocationDegrees?, from longitude: CLLocationDegrees?, databaseRef: DatabaseReference?) {
         guard let lat = latitude, let lon = longitude
             else {
                 // Will find a way to handle this potential error. Work in Progress
                 return
             }
+        
+        //databaseRef?.child("itemEntryIDs").setValue(["Hello":"World"])
         
         // Create URL based on users current location in order to get the nearby restaurants.
         // This categoryID corresponds to venues related to Food, as research from Foursquare documentation-> categoryId=4d4b7105d754a06374d81259
@@ -90,10 +103,10 @@ class RestaurantsNearMeVC: UIViewController,UITableViewDelegate, UITableViewData
                         //print(restaurantJSON.1["location"]["lng"])
                         
                         if(restaurantJSON.1["hasMenu"].stringValue == "true"){
-                            self.listOfNearbyRestaurants.append(NearbyRestaurant(venueID:restaurantJSON.1["id"].stringValue,name:restaurantJSON.1["name"].stringValue,hasMenu: true, distanceFromCurrentLocation:restaurantJSON.1["location"]["distance"].stringValue,lat:restaurantJSON.1["location"]["lat"].stringValue,lon:restaurantJSON.1["location"]["lng"].stringValue,address:restaurantJSON.1["location"]["address"].string, tableView: self.tableView))
+                            self.listOfNearbyRestaurants.append(NearbyRestaurant(venueID:restaurantJSON.1["id"].stringValue,name:restaurantJSON.1["name"].stringValue,hasMenu: true, distanceFromCurrentLocation:restaurantJSON.1["location"]["distance"].stringValue,lat:restaurantJSON.1["location"]["lat"].stringValue,lon:restaurantJSON.1["location"]["lng"].stringValue,address:restaurantJSON.1["location"]["address"].string, tableView: self.tableView, databaseRef:databaseRef))
                         }
                         else{
-                            self.listOfNearbyRestaurants.append(NearbyRestaurant(venueID:restaurantJSON.1["id"].stringValue,name:restaurantJSON.1["name"].stringValue,hasMenu: false, distanceFromCurrentLocation:restaurantJSON.1["location"]["distance"].stringValue,lat:restaurantJSON.1["location"]["lat"].stringValue,lon:restaurantJSON.1["location"]["lng"].stringValue, address:restaurantJSON.1["location"]["address"].string, tableView: self.tableView))
+                            self.listOfNearbyRestaurants.append(NearbyRestaurant(venueID:restaurantJSON.1["id"].stringValue,name:restaurantJSON.1["name"].stringValue,hasMenu: false, distanceFromCurrentLocation:restaurantJSON.1["location"]["distance"].stringValue,lat:restaurantJSON.1["location"]["lat"].stringValue,lon:restaurantJSON.1["location"]["lng"].stringValue, address:restaurantJSON.1["location"]["address"].string, tableView: self.tableView, databaseRef:databaseRef))
                         }
                     }
                     

@@ -71,7 +71,7 @@ class MenuTableVC: UITableViewController {
         
         cell?.nameLabel.text = menuItems[indexPath.section][indexPath.row].name
         cell?.priceLabel.text = menuItems[indexPath.section][indexPath.row].price
-        cell?.descriptionLabel.text = menuItems[indexPath.section][indexPath.row].description
+        //cell?.descriptionLabel.text = menuItems[indexPath.section][indexPath.row].description
         
         return cell!
     }

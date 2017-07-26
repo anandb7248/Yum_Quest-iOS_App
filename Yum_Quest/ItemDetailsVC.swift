@@ -37,16 +37,24 @@ class ItemDetailsVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func ratingButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "showRateView", sender: nil)
+    }
+    
+    @IBAction func unwindToItemDetailsVC(segue: UIStoryboardSegue){}
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "showRateView"{
+            let rateView = segue.destination as! RateViewController
+            rateView.item = item
+        }
+        
     }
-    */
     
     func hexStringToUIColor (hex:String?) -> UIColor {
         guard let hex = hex else {

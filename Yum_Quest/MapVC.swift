@@ -18,6 +18,13 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     var restaurantsLocale = [RestaurantLocale]()
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        // Initialize Tab Bar Item
+        tabBarItem = UITabBarItem(title: "Map", image: UIImage(named: "mapTab"), tag: 2)
+    }
+    
     // This function is called everytime the user's location is updated
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         

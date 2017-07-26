@@ -22,6 +22,8 @@
 		1C9C9EDE1F22DFA1006421A3 /* MenuCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9C9EDD1F22DFA1006421A3 /* MenuCategory.swift */; };
 		1C9C9EE21F22FDA5006421A3 /* MenuSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9C9EE11F22FDA5006421A3 /* MenuSection.swift */; };
 		1CAA16B01F27E9CF00EEA77F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CAA16AF1F27E9CF00EEA77F /* Assets.xcassets */; };
+		1CAA16B41F2804DB00EEA77F /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAA16B31F2804DB00EEA77F /* LaunchViewController.swift */; };
+		1CAA16BC1F28327700EEA77F /* RateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CAA16BB1F28327700EEA77F /* RateViewController.swift */; };
 		1CEAD3BA1F21862E002506FC /* RestaurantInfoTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAD3B91F21862E002506FC /* RestaurantInfoTVCell.swift */; };
 		1CEAD3BC1F21889B002506FC /* RestaurantsNearMeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEAD3BB1F21889B002506FC /* RestaurantsNearMeVC.swift */; };
 		1CEAD3BE1F218C46002506FC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CEAD3BD1F218C46002506FC /* CoreLocation.framework */; };
@@ -51,6 +53,8 @@
 		1C9C9EDD1F22DFA1006421A3 /* MenuCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCategory.swift; sourceTree = "<group>"; };
 		1C9C9EE11F22FDA5006421A3 /* MenuSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSection.swift; sourceTree = "<group>"; };
 		1CAA16AF1F27E9CF00EEA77F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1CAA16B31F2804DB00EEA77F /* LaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		1CAA16BB1F28327700EEA77F /* RateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateViewController.swift; sourceTree = "<group>"; };
 		1CEAD3B91F21862E002506FC /* RestaurantInfoTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantInfoTVCell.swift; sourceTree = "<group>"; };
 		1CEAD3BB1F21889B002506FC /* RestaurantsNearMeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantsNearMeVC.swift; sourceTree = "<group>"; };
 		1CEAD3BD1F218C46002506FC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -108,6 +112,7 @@
 				1C1F5C9D1F25C0ED007DE331 /* MenuTableVC.swift */,
 				1C8125581F2705BA0057A244 /* MenuItemsTableViewCell.swift */,
 				1C81255A1F271E9D0057A244 /* ItemDetailsVC.swift */,
+				1CAA16BB1F28327700EEA77F /* RateViewController.swift */,
 				1CEAD3C71F21CC60002506FC /* NearbyRestaurant.swift */,
 				1C9C9ED91F22D294006421A3 /* Menu.swift */,
 				1C9C9EDD1F22DFA1006421A3 /* MenuCategory.swift */,
@@ -117,6 +122,7 @@
 				1CEDAC7A1F2582D6002C26BE /* RestaurantLocale.swift */,
 				1CAA16AF1F27E9CF00EEA77F /* Assets.xcassets */,
 				1C210D8A1F1DD8CF00100F92 /* Main.storyboard */,
+				1CAA16B31F2804DB00EEA77F /* LaunchViewController.swift */,
 				1C210D8F1F1DD8CF00100F92 /* LaunchScreen.storyboard */,
 				1C210D921F1DD8CF00100F92 /* Info.plist */,
 				1C83E2761F23269F001C6FF7 /* GoogleService-Info.plist */,
@@ -270,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CAA16BC1F28327700EEA77F /* RateViewController.swift in Sources */,
 				1C1F5C921F259A65007DE331 /* RestaurantDetailsVC.swift in Sources */,
 				1CEDAC7B1F2582D6002C26BE /* RestaurantLocale.swift in Sources */,
 				1CEAD3BA1F21862E002506FC /* RestaurantInfoTVCell.swift in Sources */,
@@ -285,6 +292,7 @@
 				1C9C9EE21F22FDA5006421A3 /* MenuSection.swift in Sources */,
 				1C83E2751F23129D001C6FF7 /* MapVC.swift in Sources */,
 				1C9C9EDA1F22D294006421A3 /* Menu.swift in Sources */,
+				1CAA16B41F2804DB00EEA77F /* LaunchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
