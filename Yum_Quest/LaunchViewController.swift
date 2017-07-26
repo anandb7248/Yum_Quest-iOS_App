@@ -14,7 +14,7 @@ class LaunchViewController: UIViewController,UITabBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        launchImage.image = UIImage(named:"YumQuest_LaunchScreen55")
+        launchImage.image = UIImage(named:"YumQuest_LaunchScreen_ClassProject")
     }
 
     required init?(coder aDecoder: NSCoder) {

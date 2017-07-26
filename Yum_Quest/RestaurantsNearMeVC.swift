@@ -6,6 +6,18 @@
 //  Copyright © 2017 anandb7248. All rights reserved.
 //
 
+/*
+ San Francisco Union Square:Lat and Lon
+ lat = 37.7884
+ lon = -122.4076
+ */
+
+/*
+ Cal Poly: Lat and Lon
+ lat = 35.2828
+ lon = -120.6596
+ */
+
 import UIKit
 import CoreLocation
 import Alamofire
@@ -76,7 +88,7 @@ class RestaurantsNearMeVC: UIViewController,UITableViewDelegate, UITableViewData
         
         // Create URL based on users current location in order to get the nearby restaurants.
         // This categoryID corresponds to venues related to Food, as research from Foursquare documentation-> categoryId=4d4b7105d754a06374d81259
-        let foursquareSearchNearbyFoodURL:URLConvertible = "https://api.foursquare.com/v2/venues/search?v=20161016&ll=\(lat)%2C%20\(lon)&intent=checkin&radius=500&categoryId=4d4b7105d754a06374d81259&client_id=RT1SBOGHXRKX5KCQIAKDKDIOMHIYEDSPHXPHJTYYRPDUHVCX&client_secret=QNAZYTA3UEMCGMZQBZTB5FUHSQHYXH0N4KAQ4J5TOF354DKL"
+        let foursquareSearchNearbyFoodURL:URLConvertible = "https://api.foursquare.com/v2/venues/search?v=20161016&ll=\(lat)%2C%20\(lon)&intent=checkin&radius=1000&categoryId=4d4b7105d754a06374d81259&client_id=RT1SBOGHXRKX5KCQIAKDKDIOMHIYEDSPHXPHJTYYRPDUHVCX&client_secret=QNAZYTA3UEMCGMZQBZTB5FUHSQHYXH0N4KAQ4J5TOF354DKL"
         
         // Traverse through the JSON object obtained from the foursquare API
         Alamofire.request(foursquareSearchNearbyFoodURL).responseJSON { (responseData) -> Void in
