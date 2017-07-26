@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class RateViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource {
 
@@ -20,13 +21,31 @@ class RateViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
     var item:MenuItem?
     let ratingOptions = [1,2,3,4,5,6,7,8,9,10]
     
+    var ref:DatabaseReference?
+    var rating:Double?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ref = Database.database().reference()
+        
         menuItemLabel.text = item?.name
-        //ratingLabel
+        //ratingLabel.text = String(describing: rating)
         priceLabel.text = item?.price
         descriptionLabel.text = item?.description
+        
+        ref?.child("itemEntryIDs").child((item?.entryID)!).observeSingleEvent(of: .value, with: { (snapshot) in
+            // If a value exists that corresponds to the entryID key...
+            if let value = snapshot.value as? Double?{
+                if value == 0.0 {
+                    self.ratingLabel.text = "NA"
+                }else if value == 10.0{
+                    self.ratingLabel.text = "10"
+                }else{
+                    self.ratingLabel.text = String(format:"%.1f", value!)
+                }
+            }
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,7 +58,25 @@ class RateViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
     }
     
     @IBAction func submitPressed(_ sender: Any) {
-        print(ratingPicker.selectedRow(inComponent: 0) + 1)
+        let usersRating = Double(ratingPicker.selectedRow(inComponent: 0)) + 1.0
+        
+        ref?.child("itemEntryIDs").child((item?.entryID)!).observeSingleEvent(of: .value, with: { (snapshot) in
+            // If a value exists that corresponds to the entryID key...
+            if let previousRating = snapshot.value as? Double?{
+                
+                if previousRating == 0.0 {
+                    self.rating = usersRating
+                    let editRef = self.ref?.child("itemEntryIDs")
+                    editRef?.updateChildValues([(self.item?.entryID)!: self.rating!])
+                    self.performSegue(withIdentifier: "unwindToItemDetailsVC", sender: self.rating!)
+                }else{
+                    self.rating = (previousRating! + usersRating)/2
+                    let editRef = self.ref?.child("itemEntryIDs")
+                    editRef?.updateChildValues([(self.item?.entryID)!: self.rating!])
+                    self.performSegue(withIdentifier: "unwindToItemDetailsVC", sender: self.rating!)
+                }
+            }
+        })
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -57,14 +94,17 @@ class RateViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
     }
     
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if sender != nil {
+            let dest = segue.destination as! ItemDetailsVC
+            dest.updateRatingLabel(rating: sender as! Double)
+        }
     }
-    */
 
 }

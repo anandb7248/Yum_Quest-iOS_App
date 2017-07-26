@@ -10,6 +10,7 @@ import Alamofire
 import SwiftyJSON
 import CoreLocation
 import MapKit
+import Firebase
 
 let metersToMilesConversionRate:Double = 0.000621371
 
@@ -33,15 +34,16 @@ class NearbyRestaurant {
     //let lat:Double
     //let lon:Double
     var coordinate: CLLocationCoordinate2D
+    var databaseRef:DatabaseReference?
     
-    init(venueID:String, name:String, hasMenu:Bool, distanceFromCurrentLocation inMeters:String,lat:String,lon:String,address:String?,tableView:UITableView) {
+    init(venueID:String, name:String, hasMenu:Bool, distanceFromCurrentLocation inMeters:String,lat:String,lon:String,address:String?,tableView:UITableView, databaseRef: DatabaseReference?) {
         self.venueID = venueID
         self.name = name
         //self.hasMenu = hasMenu
         // If the restaurant allows the user to view the menu, then do an API call to obtain all the menu information.
         
         if hasMenu == true {
-            self.menuItems = Menu(venueID: venueID)
+            self.menuItems = Menu(venueID: venueID, databaseRef: databaseRef)
             self.hasMenu = true
             self.menuBackgroundColor = UIColor.orange
         }else{

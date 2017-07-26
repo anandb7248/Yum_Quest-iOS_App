@@ -8,16 +8,18 @@
 
 import Foundation
 import SwiftyJSON
+import Firebase
 
 class MenuSection {
     let sectionName:String
     var sectionItems = [MenuItem]()
+    var databaseRef:DatabaseReference?
     
-    init(sectionJSON: JSON) {
+    init(sectionJSON: JSON, databaseRef: DatabaseReference?) {
         sectionName = sectionJSON["name"].stringValue
         
         for item in sectionJSON["entries"]["items"] {
-            sectionItems.append(MenuItem(itemJSON: item.1))
+            sectionItems.append(MenuItem(itemJSON: item.1, databaseRef: databaseRef))
         }
     }
 }

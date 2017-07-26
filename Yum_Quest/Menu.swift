@@ -9,11 +9,13 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import Firebase
 
 class Menu {
     var menuCategories = [MenuCategory]()
+    var databaseRef:DatabaseReference?
     
-    init(venueID: String) {
+    init(venueID: String, databaseRef: DatabaseReference?) {
         let menuURL:URLConvertible =
          "https://api.foursquare.com/v2/venues/\(venueID)/menu?client_id=RT1SBOGHXRKX5KCQIAKDKDIOMHIYEDSPHXPHJTYYRPDUHVCX&client_secret=QNAZYTA3UEMCGMZQBZTB5FUHSQHYXH0N4KAQ4J5TOF354DKL&v=20170721"
         
@@ -32,7 +34,7 @@ class Menu {
                     */
                     
                     for jsonObject in menuJSON["response"]["menu"]["menus"]["items"] {
-                        self.menuCategories.append(MenuCategory(menuObject:jsonObject.1))
+                        self.menuCategories.append(MenuCategory(menuObject:jsonObject.1, databaseRef: databaseRef))
                     }
                 }else{
                     // Throw an error or give error message. Work in progress.

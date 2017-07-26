@@ -7,9 +7,9 @@
 //
 
 import UIKit
+import Firebase
 
 class MenuTableVC: UITableViewController {
-
     // var menu will be initialized by MenuDetailsVC's segue
     var restaurantName:String?
     var restaurantRating:String?
@@ -17,6 +17,9 @@ class MenuTableVC: UITableViewController {
     var menu:Menu?
     var menuSections = [String]()
     var menuItems = [[MenuItem]]()
+    var menuItemRating:Double?
+    
+    var ref:DatabaseReference?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,9 +27,10 @@ class MenuTableVC: UITableViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
-        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        ref = Database.database().reference()
         
         setUpMenuSectionsAndRows(restaurantMenu: menu!)
     }
@@ -71,7 +75,31 @@ class MenuTableVC: UITableViewController {
         
         cell?.nameLabel.text = menuItems[indexPath.section][indexPath.row].name
         cell?.priceLabel.text = menuItems[indexPath.section][indexPath.row].price
-        //cell?.descriptionLabel.text = menuItems[indexPath.section][indexPath.row].description
+        
+        // Rating for menu item
+        ref?.child("itemEntryIDs").child(menuItems[indexPath.section][indexPath.row].entryID).observeSingleEvent(of: .value, with: { (snapshot) in
+            // If a value exists that corresponds to the entryID key...
+            if let value = snapshot.value as? Double?{
+                self.menuItemRating = value
+
+                if value == 0.0{
+                    cell?.ratingLabel.text = "NA"
+                }
+                else if value == 10.0 {
+                    cell?.ratingLabel.text = "10"
+                }
+                else {
+                    cell?.ratingLabel.text = String(format:"%.1f", value!)
+                }
+            }else{
+                /*
+                // If a value does not exist that corresponds to the entryID key
+                //databaseRef?.child("itemEntryIDs").setValue([name: 0.0])
+                let newStandRef = ref?.child("itemEntryIDs").child(itemJSON["entryId"].stringValue)
+                newStandRef?.setValue(0.0)
+                */
+            }
+        })
         
         return cell!
     }
@@ -117,6 +145,8 @@ class MenuTableVC: UITableViewController {
 
     // MARK: - Navigation
 
+    @IBAction func unwindToMenuTableVC(segue:UIStoryboardSegue) { }
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
@@ -127,13 +157,9 @@ class MenuTableVC: UITableViewController {
             item.restaurantName = restaurantName
             item.rating = restaurantRating
             item.ratingColor = restaurantRatingColor
-            
             let selectedIndexPath = tableView.indexPathForSelectedRow
             
             item.item = menuItems[(selectedIndexPath?.section)!][(selectedIndexPath?.row)!]
-            
-        //menuItems[indexPath.section][indexPath.row].name
         }
     }
-
 }
