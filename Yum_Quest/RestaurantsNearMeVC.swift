@@ -13,9 +13,15 @@
  */
 
 /*
- Cal Poly: Lat and Lon
+ SLO Downtown: Lat and Lon
  lat = 35.2828
  lon = -120.6596
+ */
+
+/*
+ Cal Poly: Lat and Lon
+ lat = 35.3050 
+ lon = 120.6625
  */
 
 import UIKit
@@ -46,7 +52,6 @@ class RestaurantsNearMeVC: UIViewController,UITableViewDelegate, UITableViewData
 
         // configureLocationManager will set up the location manager and also set the currentLat and currentLon implicitly
         configureLocationManager()
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -101,57 +106,66 @@ class RestaurantsNearMeVC: UIViewController,UITableViewDelegate, UITableViewData
                     self.listOfNearbyRestaurants = [NearbyRestaurant]()
                     
                     for (_,restaurantJSON) in nearbyRestaurantsJSON["response"]["venues"].enumerated(){
-                        
-                        //print(restaurantJSON.1["location"]["address"])
-                        
-                        /*
-                        // Everything works as intended
-                        print(restaurantJSON.1["name"])
-                        print(restaurantJSON.1["location"]["distance"])
-                        print(restaurantJSON.1["id"])
-                        print(restaurantJSON.1["hasMenu"]) // Will be either "true" or "null"
-                            // ["categories"]["id"]// In the future it looks like I need to filter out venues where it is not traditionally known as restaurants e.g. Gas Stations
-                            //["categories"]["pluralName"]
-                        */
-                        //print(restaurantJSON.1["location"]["lat"])
-                        //print(restaurantJSON.1["location"]["lng"])
-                        
                         if(restaurantJSON.1["hasMenu"].stringValue == "true"){
-                            self.listOfNearbyRestaurants.append(NearbyRestaurant(venueID:restaurantJSON.1["id"].stringValue,name:restaurantJSON.1["name"].stringValue,hasMenu: true, distanceFromCurrentLocation:restaurantJSON.1["location"]["distance"].stringValue,lat:restaurantJSON.1["location"]["lat"].stringValue,lon:restaurantJSON.1["location"]["lng"].stringValue,address:restaurantJSON.1["location"]["address"].string, tableView: self.tableView, databaseRef:databaseRef))
-                        }
-                        else{
+                            //
+                            let menuURL:URLConvertible =
+                            "https://api.foursquare.com/v2/venues/\(restaurantJSON.1["id"].stringValue)/menu?client_id=RT1SBOGHXRKX5KCQIAKDKDIOMHIYEDSPHXPHJTYYRPDUHVCX&client_secret=QNAZYTA3UEMCGMZQBZTB5FUHSQHYXH0N4KAQ4J5TOF354DKL&v=20170721"
+                            
+                            Alamofire.request(menuURL).responseJSON { (responseData) -> Void in
+                                if((responseData.result.value) != nil) {
+                                    let menuJSON = JSON(responseData.result.value!)
+                                    
+                                    if(menuJSON["meta"]["code"].stringValue == "200"){
+                                        if (menuJSON["response"]["menu"]["menus"]["count"].stringValue == "0"){
+                                            DispatchQueue.main.async {
+                                                self.listOfNearbyRestaurants.append(NearbyRestaurant(venueID:restaurantJSON.1["id"].stringValue,name:restaurantJSON.1["name"].stringValue,hasMenu: false, distanceFromCurrentLocation:restaurantJSON.1["location"]["distance"].stringValue,lat:restaurantJSON.1["location"]["lat"].stringValue,lon:restaurantJSON.1["location"]["lng"].stringValue,address:restaurantJSON.1["location"]["address"].string, tableView: self.tableView, databaseRef:databaseRef))
+                                            }
+                                        }else{
+                                            DispatchQueue.main.async {
+                                                self.listOfNearbyRestaurants.append(NearbyRestaurant(venueID:restaurantJSON.1["id"].stringValue,name:restaurantJSON.1["name"].stringValue,hasMenu: true, distanceFromCurrentLocation:restaurantJSON.1["location"]["distance"].stringValue,lat:restaurantJSON.1["location"]["lat"].stringValue,lon:restaurantJSON.1["location"]["lng"].stringValue,address:restaurantJSON.1["location"]["address"].string, tableView: self.tableView, databaseRef:databaseRef))
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }else{
+                            DispatchQueue.main.async {
                             self.listOfNearbyRestaurants.append(NearbyRestaurant(venueID:restaurantJSON.1["id"].stringValue,name:restaurantJSON.1["name"].stringValue,hasMenu: false, distanceFromCurrentLocation:restaurantJSON.1["location"]["distance"].stringValue,lat:restaurantJSON.1["location"]["lat"].stringValue,lon:restaurantJSON.1["location"]["lng"].stringValue, address:restaurantJSON.1["location"]["address"].string, tableView: self.tableView, databaseRef:databaseRef))
+                            }
                         }
                     }
+                    self.listOfNearbyRestaurants = self.listOfNearbyRestaurants.sorted(by: { $0.distanceFromCurrentLocationMiles < $1.distanceFromCurrentLocationMiles})
+                        
+                    DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                    }
+                }
+            }
+        }
+    }
+                 /*
+                            //
+                            /*
+                            self.listOfNearbyRestaurants.append(NearbyRestaurant(venueID:restaurantJSON.1["id"].stringValue,name:restaurantJSON.1["name"].stringValue,hasMenu: true, distanceFromCurrentLocation:restaurantJSON.1["location"]["distance"].stringValue,lat:restaurantJSON.1["location"]["lat"].stringValue,lon:restaurantJSON.1["location"]["lng"].stringValue,address:restaurantJSON.1["location"]["address"].string, tableView: self.tableView, databaseRef:databaseRef))
+                            */
+                        }
+                        /*else{
+                            self.listOfNearbyRestaurants.append(NearbyRestaurant(venueID:restaurantJSON.1["id"].stringValue,name:restaurantJSON.1["name"].stringValue,hasMenu: false, distanceFromCurrentLocation:restaurantJSON.1["location"]["distance"].stringValue,lat:restaurantJSON.1["location"]["lat"].stringValue,lon:restaurantJSON.1["location"]["lng"].stringValue, address:restaurantJSON.1["location"]["address"].string, tableView: self.tableView, databaseRef:databaseRef))
+                        }*/
                     
                     // Sort the array of nearby restaurants by the ditance from the current location. The restaurants being the closest sorted to start at the beginning of the array.
-                    self.listOfNearbyRestaurants = self.listOfNearbyRestaurants.sorted(by: { $0.distanceFromCurrentLocationMiles < $1.distanceFromCurrentLocationMiles})
-                    
                     /*
-                    // IT WORKS
-                    // Test the array
-                    for item in self.listOfNearbyRestaurants {
-                        print(item.name)
-                        print(item.venueID)
-                        print(item.hasMenu)
-                        print(item.distanceFromCurrentLocationMiles)
-                    }
-                    */
+                    self.listOfNearbyRestaurants = self.listOfNearbyRestaurants.sorted(by: { $0.distanceFromCurrentLocationMiles < $1.distanceFromCurrentLocationMiles})
                     
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
-                }else{
-                    // Throw error or print error message as there was something wrong with our API call
-                    print("ERROR")
-                }
-                
-                // TEST
-                //print(nearbyRestaurantsSwiftyJSON)
+                    */
+                }}
             }
         }
     }
-
+    */
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -169,9 +183,11 @@ class RestaurantsNearMeVC: UIViewController,UITableViewDelegate, UITableViewData
         cell?.restaurantNameLabel.text = restaurant.name
         cell?.distanceLabel.text = String(restaurant.distanceFromCurrentLocationMiles)
         cell?.menuReviewsLabel.backgroundColor = restaurant.menuBackgroundColor
-        
         cell?.ratingLabel.text = restaurant.rating
+        /*
         cell?.ratingBackgroundLabel.backgroundColor = hexStringToUIColor(hex: restaurant.ratingColor)
+        */
+        cell?.ratingLabel.backgroundColor = hexStringToUIColor(hex: restaurant.ratingColor)
         cell?.priceTierLabel.text = restaurant.priceTier
         cell?.categoryLabel.text = restaurant.category
         

@@ -20,7 +20,6 @@ class MenuItem{
 
     init(itemJSON: JSON, databaseRef: DatabaseReference?) {
         entryID = itemJSON["entryId"].stringValue
-        //
         databaseRef?.child("itemEntryIDs").child(itemJSON["entryId"].stringValue).observeSingleEvent(of: .value, with: { (snapshot) in
             // If a value exists that corresponds to the entryID key...
             if (snapshot.value as? Double?) != nil{
@@ -32,9 +31,12 @@ class MenuItem{
                 newStandRef?.setValue(0.0)
             }
         })
-        //
         
-        name    = itemJSON["name"].stringValue
+        if itemJSON["name"].string != nil {
+            name = itemJSON["name"].stringValue
+        }else{
+            name = ""
+        }
         
         if itemJSON["description"].string != nil {
             description = itemJSON["description"].stringValue

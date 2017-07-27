@@ -186,6 +186,7 @@
 				TargetAttributes = {
 					1C210D821F1DD8CF00100F92 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 3T7MEVP2UU;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -416,6 +417,7 @@
 			baseConfigurationReference = 512ABD6B19325E5194E98CB2 /* Pods-Yum_Quest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3T7MEVP2UU;
 				INFOPLIST_FILE = Yum_Quest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Anand-Batjargal.Yum-Quest";
@@ -429,6 +431,7 @@
 			baseConfigurationReference = 2EB969A0B18A2B08370D092D /* Pods-Yum_Quest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3T7MEVP2UU;
 				INFOPLIST_FILE = Yum_Quest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Anand-Batjargal.Yum-Quest";

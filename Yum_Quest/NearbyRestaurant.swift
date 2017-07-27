@@ -17,9 +17,9 @@ let metersToMilesConversionRate:Double = 0.000621371
 class NearbyRestaurant {
     let venueID:String
     let name:String
-    let menuItems:Menu?
+    var menuItems:Menu?
     var hasMenu:Bool
-    let menuBackgroundColor:UIColor
+    var menuBackgroundColor:UIColor
     let distanceFromCurrentLocationMiles:Double
     
     var rating:String?
@@ -37,21 +37,31 @@ class NearbyRestaurant {
     var databaseRef:DatabaseReference?
     
     init(venueID:String, name:String, hasMenu:Bool, distanceFromCurrentLocation inMeters:String,lat:String,lon:String,address:String?,tableView:UITableView, databaseRef: DatabaseReference?) {
+        
         self.venueID = venueID
         self.name = name
-        //self.hasMenu = hasMenu
-        // If the restaurant allows the user to view the menu, then do an API call to obtain all the menu information.
         
         if hasMenu == true {
-            self.menuItems = Menu(venueID: venueID, databaseRef: databaseRef)
+            menuItems = Menu(venueID: venueID, databaseRef: databaseRef)
             self.hasMenu = true
             self.menuBackgroundColor = UIColor.orange
+            /*
+            if menuItems != nil {
+                self.hasMenu = true
+                self.menuBackgroundColor = UIColor.orange
+                print("HAS MENU - Class NearbyRestaurant")
+            }else{
+                self.hasMenu = false
+                self.menuBackgroundColor = UIColor.white
+                print("NO MENU - Class NearbyRestaurant")
+            }
+            */
         }else{
             self.menuItems = nil
             self.hasMenu = false
             self.menuBackgroundColor = UIColor.white
         }
-        
+
         let miles = Double(inMeters)! * metersToMilesConversionRate
         
         // Save the miles value to two significant figures
@@ -75,14 +85,12 @@ class NearbyRestaurant {
                         self.priceTier = " "
                     }
                     
-                    //Rating - Might need fixing in the future here
-                    //print(venueDetailsJSON["response"]["venue"]["rating"])
                     self.rating = venueDetailsJSON["response"]["venue"]["rating"].stringValue
-                    //print(self.rating)
+                    
                     if (self.rating?.characters.count)! > 3 {
                         self.rating = self.rating?.substring(to: (self.rating?.index((self.rating?.startIndex)!, offsetBy: 3))!)
                     }
-            
+                    
                     //Rating Color - Works
                     //print(venueDetailsJSON["response"]["venue"]["ratingColor"])
                     self.ratingColor = venueDetailsJSON["response"]["venue"]["ratingColor"].stringValue
